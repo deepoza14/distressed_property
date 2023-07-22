@@ -269,6 +269,7 @@ class _HomePageState extends State<HomePage> {
                                         PopupMenuItem(
                                           child: InkWell(
                                             onTap: () {
+                                              Navigator.pop(context);
                                               showModalBottomSheet(
                                                   context: context,
                                                   builder: (context) =>
