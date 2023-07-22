@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:distressed_property/screens/homepage.dart';
 import 'package:distressed_property/theme/color_theme.dart';
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,11 @@ class _OtpScreenState extends State<OtpScreen> {
       _otpController.clear(); // Clear the OTP input field
       _startTimer();
     }
+  }
+
+  void verifyotp() async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   @override
@@ -126,7 +132,8 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 31, horizontal: 14),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 31, horizontal: 14),
                 child: Text(
                   "Enter verification code sent your +91-9876XXXX10",
                   style: subtitleTextStyle(),
@@ -142,7 +149,9 @@ class _OtpScreenState extends State<OtpScreen> {
                   controller: _otpController,
                   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                   showCursor: true,
-                  onCompleted: (pin) {},
+                  onCompleted: (pin) {
+                    verifyotp();
+                  },
                   onChanged: (value) {
                     //listenForOTP();
                   },
