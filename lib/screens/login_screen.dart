@@ -18,7 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    // Add a listener to the phoneController to check the text length and enable the button accordingly
     phoneController.addListener(updateButtonState);
   }
 
