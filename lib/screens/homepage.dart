@@ -1,5 +1,5 @@
 import 'package:distressed_property/theme/textstyle.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:distressed_property/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -182,8 +182,9 @@ class _HomePageState extends State<HomePage> {
                       height: 185,
                       width: 368,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(6)),
-                          color: Color(0xFFEEF6F9),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(6)),
+                          color: const Color(0xFFEEF6F9),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
@@ -208,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -241,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.black),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             thickness: 0.5,
                           ),
                           Row(
@@ -254,40 +255,60 @@ class _HomePageState extends State<HomePage> {
                                   style: editTextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xffF36F56)),
+                                      color: const Color(0xffF36F56)),
                                 ),
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.phone_outlined),
+                                  const Icon(Icons.phone_outlined),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 18, right: 15),
                                     child: PopupMenuButton(
                                       itemBuilder: (context) => [
                                         PopupMenuItem(
-                                          child: Text(
-                                            "View",
-                                            style: editTextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w500,
-                                                color: Color(0xffF36F56)),
+                                          child: InkWell(
+                                            onTap: () {
+                                              showModalBottomSheet(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      const CustomBottomSheet());
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "View",
+                                                  style: editTextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.w500,
+                                                    color:
+                                                        const Color(0xffF36F56),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          onTap: () {},
                                         ),
                                         PopupMenuItem(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                            showModalBottomSheet(
+                                                context: context,
+                                                builder: (context) =>
+                                                    const CustomBottomSheet());
+                                          },
                                           child: Text(
                                             "Update",
                                             style: editTextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w500,
-                                                color: Color.fromRGBO(
-                                                    97, 101, 215, 1.0)),
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color.fromRGBO(
+                                                  97, 101, 215, 1.0),
+                                            ),
                                           ),
-                                          onTap: () {},
                                         ),
                                       ],
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.more_horiz,
                                       ),
                                     ),
@@ -307,8 +328,9 @@ class _HomePageState extends State<HomePage> {
                       height: 185,
                       width: 368,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(6)),
-                          color: Color.fromRGBO(222, 229, 255, 1.0),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(6)),
+                          color: const Color.fromRGBO(222, 229, 255, 1.0),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
@@ -340,7 +362,8 @@ class _HomePageState extends State<HomePage> {
                                   style: editMetropolisTextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
-                                      color: Color.fromRGBO(40, 180, 70, 1)),
+                                      color:
+                                          const Color.fromRGBO(40, 180, 70, 1)),
                                 ),
                               ],
                             ),
@@ -365,7 +388,7 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.black),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             thickness: 0.5,
                           ),
                           Padding(
@@ -375,7 +398,7 @@ class _HomePageState extends State<HomePage> {
                               style: editTextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff2454ff)),
+                                  color: const Color(0xff2454ff)),
                             ),
                           )
                         ],

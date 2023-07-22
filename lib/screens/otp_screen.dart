@@ -39,7 +39,7 @@ class _OtpScreenState extends State<OtpScreen> {
       _enableResend = false;
     });
 
-    _resendTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _resendTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_resendSeconds == 0) {
         _stopTimer();
         setState(() {
@@ -66,7 +66,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void verifyotp() async {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => MainAppScreen()));
+        context, MaterialPageRoute(builder: (context) => const MainAppScreen()));
   }
 
   @override
@@ -74,24 +74,24 @@ class _OtpScreenState extends State<OtpScreen> {
     final defaultPinTheme = PinTheme(
       width: 48,
       height: 48,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(30, 60, 87, 1),
           fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
-        border: Border.all(color: Color.fromRGBO(217, 217, 217, 1.0)),
+        border: Border.all(color: const Color.fromRGBO(217, 217, 217, 1.0)),
         borderRadius: BorderRadius.circular(4),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(217, 217, 217, 1.0)),
+      border: Border.all(color: const Color.fromRGBO(217, 217, 217, 1.0)),
       borderRadius: BorderRadius.circular(4),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color.fromRGBO(234, 239, 243, 1),
+        color: const Color.fromRGBO(234, 239, 243, 1),
       ),
     );
     return Scaffold(
@@ -157,7 +157,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Center(

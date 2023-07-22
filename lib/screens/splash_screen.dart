@@ -4,14 +4,14 @@ import 'package:distressed_property/screens/login_screen.dart';
 import 'package:distressed_property/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 
-class Splash_screen extends StatefulWidget {
-  const Splash_screen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<Splash_screen> createState() => _Splash_screenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _Splash_screenState extends State<Splash_screen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
@@ -21,8 +21,10 @@ class _Splash_screenState extends State<Splash_screen> {
 
   Future<void> navigate() async {
     await Future.delayed(const Duration(milliseconds: 2000));
-    Navigator.pushReplacement(
+    if(context.mounted) {
+      Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+    }
   }
 
   @override

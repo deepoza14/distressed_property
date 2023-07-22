@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 TextStyle titleTextStyle() {
-  return TextStyle(
+  return const TextStyle(
     fontFamily: 'Montserrat',
     fontSize: 28,
     fontWeight: FontWeight.w600,
@@ -10,7 +10,7 @@ TextStyle titleTextStyle() {
 }
 
 TextStyle subtitleTextStyle() {
-  return TextStyle(
+  return const TextStyle(
       fontFamily: 'Montserrat',
       fontSize: 22,
       fontWeight: FontWeight.w500,

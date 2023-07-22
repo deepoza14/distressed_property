@@ -1,4 +1,3 @@
-import 'package:distressed_property/screens/login_screen.dart';
 import 'package:distressed_property/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: Splash_screen(),
+      home: const SplashScreen(),
     );
   }
 }

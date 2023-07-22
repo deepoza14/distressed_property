@@ -5,18 +5,20 @@ import 'package:distressed_property/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainAppScreen extends StatefulWidget {
+  const MainAppScreen({super.key});
+
   @override
-  _MainAppScreenState createState() => _MainAppScreenState();
+  MainAppScreenState createState() => MainAppScreenState();
 }
 
-class _MainAppScreenState extends State<MainAppScreen> {
+class MainAppScreenState extends State<MainAppScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    HomePage(),
-    PendingScreen(),
-    CompleteScreen(),
-    ProfileScreen(),
+    const HomePage(),
+    const PendingScreen(),
+    const CompleteScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -35,7 +37,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
           });
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
@@ -47,7 +49,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
             icon: Image.asset("assets/images/complete.png"),
             label: 'Complete',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
