@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:distressed_property/screens/homepage.dart';
+import 'package:distressed_property/screens/mainscreen.dart';
 import 'package:distressed_property/theme/color_theme.dart';
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +66,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void verifyotp() async {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+        context, MaterialPageRoute(builder: (context) => MainAppScreen()));
   }
 
   @override

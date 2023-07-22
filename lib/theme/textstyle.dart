@@ -29,3 +29,16 @@ TextStyle editTextStyle({
     color: color,
   );
 }
+
+TextStyle editMetropolisTextStyle({
+  required double fontSize,
+  required FontWeight fontWeight,
+  required Color color,
+}) {
+  return TextStyle(
+    fontFamily: 'Metropolis',
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    color: color,
+  );
+}
