@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Use the isButtonEnabled variable to determine whether the button should be enabled or not
                     style: ButtonStyle(
                       foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
+                          MaterialStateProperty.all<Color>(Colors.white),
                       backgroundColor: MaterialStateProperty.all<Color>(
                           isButtonEnabled
                               ? const Color(0xff2454ff)

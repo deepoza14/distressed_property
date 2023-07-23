@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:distressed_property/widgets/custom_button.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class PropertyImages extends StatefulWidget {
@@ -10,6 +13,21 @@ class PropertyImages extends StatefulWidget {
 }
 
 class _PropertyImagesState extends State<PropertyImages> {
+  File? _attachmentFile1;
+  File? _attachmentFile2;
+
+  Future<void> _pickFile1() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      setState(() {
+        _attachmentFile1 = File(result.files.single.path!);
+      });
+    } else {
+      // User canceled the picker
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,26 +84,30 @@ class _PropertyImagesState extends State<PropertyImages> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 92,
-                                  width: 92,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: const Color(0xff2454FF))),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset("assets/images/camera.png"),
-                                      Text(
-                                        "Add Video",
-                                        style: editMetropolisTextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black),
-                                      ),
-                                    ],
+                                child: InkWell(
+                                  onTap: _pickFile1,
+                                  child: Container(
+                                    height: 92,
+                                    width: 92,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: const Color(0xff2454FF))),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset("assets/images/camera.png"),
+                                        Text(
+                                          "Add Video",
+                                          style: editMetropolisTextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -93,6 +115,25 @@ class _PropertyImagesState extends State<PropertyImages> {
                                 padding: EdgeInsets.only(
                                     top: 20, bottom: 20, left: 10),
                                 child: VerticalDivider(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 92,
+                                  width: 92,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0xff2454FF))),
+                                  child: _attachmentFile1 != null
+                                      ? Image.file(
+                                          _attachmentFile1!,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : Image.asset(
+                                          "assets/images/noimage.png",
+                                          fit: BoxFit.cover,
+                                        ),
+                                ),
                               ),
                             ],
                           ),
@@ -133,26 +174,30 @@ class _PropertyImagesState extends State<PropertyImages> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 92,
-                                  width: 92,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: const Color(0xff2454FF))),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset("assets/images/camera.png"),
-                                      Text(
-                                        "Add Video",
-                                        style: editMetropolisTextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black),
-                                      ),
-                                    ],
+                                child: InkWell(
+                                  onTap: _pickFile1,
+                                  child: Container(
+                                    height: 92,
+                                    width: 92,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: const Color(0xff2454FF))),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset("assets/images/camera.png"),
+                                        Text(
+                                          "Add Video",
+                                          style: editMetropolisTextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -160,6 +205,20 @@ class _PropertyImagesState extends State<PropertyImages> {
                                 padding: EdgeInsets.only(
                                     top: 20, bottom: 20, left: 10),
                                 child: VerticalDivider(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 92,
+                                  width: 92,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0xff2454FF))),
+                                  child: _attachmentFile1 != null
+                                      ? Image.file(_attachmentFile1!)
+                                      : Image.asset(
+                                          "assets/images/noimage.png"),
+                                ),
                               ),
                             ],
                           ),
@@ -334,26 +393,30 @@ class _PropertyImagesState extends State<PropertyImages> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 92,
-                                  width: 92,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: const Color(0xff2454FF))),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset("assets/images/camera.png"),
-                                      Text(
-                                        "Add Video",
-                                        style: editMetropolisTextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black),
-                                      ),
-                                    ],
+                                child: InkWell(
+                                  onTap: _pickFile1,
+                                  child: Container(
+                                    height: 92,
+                                    width: 92,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: const Color(0xff2454FF))),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset("assets/images/camera.png"),
+                                        Text(
+                                          "Add Video",
+                                          style: editMetropolisTextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -361,6 +424,20 @@ class _PropertyImagesState extends State<PropertyImages> {
                                 padding: EdgeInsets.only(
                                     top: 20, bottom: 20, left: 10),
                                 child: VerticalDivider(),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 92,
+                                  width: 92,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: const Color(0xff2454FF))),
+                                  child: _attachmentFile1 != null
+                                      ? Image.file(_attachmentFile1!)
+                                      : Image.asset(
+                                          "assets/images/noimage.png"),
+                                ),
                               ),
                             ],
                           ),

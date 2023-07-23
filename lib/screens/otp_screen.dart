@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:distressed_property/screens/mainscreen.dart';
 import 'package:distressed_property/theme/color_theme.dart';
 import 'package:distressed_property/theme/textstyle.dart';
+import 'package:distressed_property/widgets/failedalert.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -126,6 +127,12 @@ class _OtpScreenState extends State<OtpScreen> {
       // OTP verification completed, navigate to the main screen
       _navigateToMainScreen();
     } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const FailedAlertDialog();
+        },
+      );
       // Handle invalid OTP or other errors during verification
       print('Verification Error: $e');
     }

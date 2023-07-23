@@ -8,7 +8,12 @@
     <string>Allow access to read SMS for auto-verification</string>
     <key>NSSMSMessageUsageDescription</key>
     <string>Allow access to read SMS for auto-verification</string>
-
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>to upload images</string>
+	<key>NSCameraUsageDescription</key>
+    <string>to upload images</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>to record audio</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
