@@ -1,4 +1,6 @@
+import 'package:distressed_property/screens/property_images.dart';
 import 'package:distressed_property/theme/textstyle.dart';
+import 'package:distressed_property/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class UpdateScreen extends StatefulWidget {
@@ -62,7 +64,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     icon: Image.asset("assets/images/arrow.png"),
                   ),
                 ),
-
                 ListTile(
                   leading: Image.asset("assets/images/profile.png"),
                   title: Text(
@@ -89,7 +90,11 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   ),
                   trailing: IconButton(
                     onPressed: () {},
-                    icon: Image.asset("assets/images/arrow.png",height: 35,width: 35,),
+                    icon: Image.asset(
+                      "assets/images/arrow.png",
+                      height: 35,
+                      width: 35,
+                    ),
                   ),
                 ),
                 ListTile(
@@ -175,7 +180,12 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     ],
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PropertyImages()));
+                    },
                     icon: Image.asset("assets/images/arrow.png"),
                   ),
                 ),
@@ -212,6 +222,14 @@ class _UpdateScreenState extends State<UpdateScreen> {
             )
           ],
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding:
+            const EdgeInsets.only(left: 32, right: 32, top: 10, bottom: 10),
+        child: CustomButton(
+          onPressed: () {},
+          text: "Submit", color: Color(0xffd9d9d9), textColor: Color(0xFF5F5F5F)),
+
       ),
     );
   }

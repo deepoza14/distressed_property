@@ -4,9 +4,16 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final Color color; // New required color property
+  final Color textColor; // New required textColor property
 
-  const CustomButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  const CustomButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+    required this.color, // Marking it as required
+    required this.textColor, // Marking it as required
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +23,10 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          backgroundColor:
-          MaterialStateProperty.all<Color>(const Color(0xffd9d9d9)),
+          foregroundColor: MaterialStateProperty.all<Color>(textColor),
+          // Use the provided textColor
+          backgroundColor: MaterialStateProperty.all<Color>(color),
+          // Use the provided color
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6),
@@ -27,10 +35,12 @@ class CustomButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: editTextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
-              color: const Color(0xFF5F5F5F)),
+          style: // Merge the provided textStyle with the default style
+              editTextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w400,
+            color: textColor, // Use the provided textColor
+          ),
         ),
       ),
     );
