@@ -292,20 +292,26 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                         PopupMenuItem(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        UpdateScreen()));
-                                          },
-                                          child: Text(
-                                            "Update",
-                                            style: editTextStyle(
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color.fromRGBO(
-                                                  97, 101, 215, 1.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const UpdateScreen()));
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Update",
+                                                  style: editTextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: const Color.fromRGBO(
+                                                        97, 101, 215, 1.0),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),

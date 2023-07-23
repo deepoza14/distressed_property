@@ -19,7 +19,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
         title: Text(
           "Property Inspection",
@@ -46,7 +46,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   subtitle: Row(
                     children: [
                       Image.asset("assets/images/verification_successfull.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -54,7 +54,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         style: editMetropolisTextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xff28B446),
+                          color: const Color(0xff28B446),
                         ),
                       ),
                     ],
@@ -76,7 +76,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   subtitle: Row(
                     children: [
                       Image.asset("assets/images/verification_successfull.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -84,7 +84,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         style: editMetropolisTextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xff28B446)),
+                            color: const Color(0xff28B446)),
                       ),
                     ],
                   ),
@@ -109,7 +109,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   subtitle: Row(
                     children: [
                       Image.asset("assets/images/verification_pending.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -117,7 +117,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         style: editMetropolisTextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xffFFA450)),
+                            color: const Color(0xffFFA450)),
                       ),
                     ],
                   ),
@@ -138,7 +138,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   subtitle: Row(
                     children: [
                       Image.asset("assets/images/verification_pending.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -146,7 +146,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         style: editMetropolisTextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xffFFA450)),
+                            color: const Color(0xffFFA450)),
                       ),
                     ],
                   ),
@@ -167,7 +167,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   subtitle: Row(
                     children: [
                       Image.asset("assets/images/verification_pending.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -175,7 +175,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         style: editMetropolisTextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xffFFA450)),
+                            color: const Color(0xffFFA450)),
                       ),
                     ],
                   ),
@@ -184,7 +184,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PropertyImages()));
+                              builder: (context) => const PropertyImages()));
                     },
                     icon: Image.asset("assets/images/arrow.png"),
                   ),
@@ -201,7 +201,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   subtitle: Row(
                     children: [
                       Image.asset("assets/images/verification_pending.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -209,7 +209,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         style: editMetropolisTextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xffFFA450)),
+                            color: const Color(0xffFFA450)),
                       ),
                     ],
                   ),
@@ -228,7 +228,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
             const EdgeInsets.only(left: 32, right: 32, top: 10, bottom: 10),
         child: CustomButton(
           onPressed: () {},
-          text: "Submit", color: Color(0xffd9d9d9), textColor: Color(0xFF5F5F5F)),
+          text: "Submit", color: const Color(0xffd9d9d9), textColor: const Color(0xFF5F5F5F)),
 
       ),
     );

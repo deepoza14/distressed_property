@@ -125,7 +125,7 @@ class CustomBottomSheet extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 35, top: 5, bottom: 0,right: 35),
                 child: TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const UpdateScreen()));
                     },
                     child: Container(
                         height: 52,
