@@ -15,7 +15,7 @@ class MainAppScreenState extends State<MainAppScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    const HomePage(),
+     HomePage(),
     const PendingScreen(),
     const CompleteScreen(),
     const ProfileScreen(),

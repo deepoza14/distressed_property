@@ -150,22 +150,25 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 430;
+    double w = MediaQuery.of(context).size.width / baseWidth;
+    double ww = w * 0.97;
     final defaultPinTheme = PinTheme(
-      width: 48,
-      height: 48,
+      width: 48 * w,
+      height: 48 * w,
       textStyle: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(30, 60, 87, 1),
           fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
         border: Border.all(color: const Color.fromRGBO(217, 217, 217, 1.0)),
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(4 * w),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
       border: Border.all(color: const Color.fromRGBO(217, 217, 217, 1.0)),
-      borderRadius: BorderRadius.circular(4),
+      borderRadius: BorderRadius.circular(4 * w),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
@@ -175,94 +178,100 @@ class _OtpScreenState extends State<OtpScreen> {
     );
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 32, top: 16),
-                child: Container(
-                  height: 64,
-                  width: 64,
-                  decoration: const BoxDecoration(
-                      color: MyColorTheme.primaryColor,
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(78),
-                          bottomRight: Radius.circular(78))),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 154, top: 58, right: 180),
-                child: SizedBox(
-                  height: 91,
-                  width: 111,
-                  child: Image.asset(
-                    "assets/images/verifyotp.png",
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16 * w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 64 * w,
+                  width: 64 * w,
+                  decoration: BoxDecoration(
+                    color: MyColorTheme.primaryColor,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(78 * w),
+                      bottomRight: Radius.circular(78 * w),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 85, top: 34),
-                child: Text(
-                  "OTP Verification",
-                  style: titleTextStyle(),
+                SizedBox(height: 48 * w),
+                Center(
+                  child: SizedBox(
+                    height: 91 * w,
+                    width: 111 * w,
+                    child: Image.asset("assets/images/verifyotp.png"),
+                  ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 31, horizontal: 14),
-                child: Text(
+                SizedBox(height: 34 * w),
+                Center(
+                  child: Text(
+                    "OTP Verification",
+                    style: editTextStyle(
+                      fontSize: 28 * ww,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff000000),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16 * w),
+                Text(
                   "Enter verification code sent to your +91-${widget.phoneNumber}",
-                  style: subtitleTextStyle(),
+                  style: editTextStyle(
+                    fontSize: 18 * ww,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff5e5e5e),
+                  ),
                   textAlign: TextAlign.center,
                 ),
-              ),
-              Center(
-                child: Pinput(
-                  length: 6,
-                  defaultPinTheme: defaultPinTheme,
-                  focusedPinTheme: focusedPinTheme,
-                  submittedPinTheme: submittedPinTheme,
-                  controller: _otpController,
-                  pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                  // Enable auto-validation
-                  showCursor: true,
-                  onCompleted: (pin) {
-                    _signInWithOTP(
-                        pin); // Call _signInWithOTP with the entered PIN
-                  },
+                SizedBox(height: 32 * w),
+                Center(
+                  child: Pinput(
+                    length: 6,
+                    defaultPinTheme: defaultPinTheme,
+                    focusedPinTheme: focusedPinTheme,
+                    submittedPinTheme: submittedPinTheme,
+                    controller: _otpController,
+                    pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                    // Enable auto-validation
+                    showCursor: true,
+                    onCompleted: (pin) {
+                      _signInWithOTP(
+                          pin); // Call _signInWithOTP with the entered PIN
+                    },
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              Center(
-                child: SizedBox(
-                  height: 52,
-                  child: ElevatedButton(
-                    onPressed: _handleResendClick,
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                SizedBox(height: 25 * w),
+                Center(
+                  child: SizedBox(
+                    height: 52 * w,
+                    child: ElevatedButton(
+                      onPressed: _handleResendClick,
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      _enableResend
-                          ? "Resend SMS"
-                          : "Resend SMS in $_resendSeconds s",
-                      style: editTextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
+                      child: Text(
+                        _enableResend
+                            ? "Resend SMS"
+                            : "Resend SMS in $_resendSeconds s",
+                        style: editTextStyle(
+                          fontSize: 14 * ww,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              )
-            ],
+              ],
+            ),
           ),
         ),
       ),

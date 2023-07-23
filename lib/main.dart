@@ -1,4 +1,5 @@
 import 'package:distressed_property/firebase_options.dart';
+import 'package:distressed_property/screens/login_screen.dart';
 import 'package:distressed_property/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home:  LoginScreen(),
     );
   }
 }
