@@ -1,6 +1,7 @@
 import 'package:distressed_property/screens/otp_screen.dart';
 import 'package:distressed_property/theme/color_theme.dart';
 import 'package:distressed_property/theme/textstyle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -25,6 +26,39 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       isButtonEnabled = phoneController.text.trim().length == 10;
     });
+  }
+
+  Future<void> verifyPhoneNumber(String phoneNumber) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    await auth.verifyPhoneNumber(
+      phoneNumber: '+91$phoneNumber',
+      // Add the country code to the phone number
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        // Auto-retrieve the SMS code on Android devices
+        await auth.signInWithCredential(credential);
+        // You can navigate to the next screen here
+        // (Optional: If you want to navigate to another screen, do it here)
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        // Handle verification failure (e.g., the phone number format is incorrect)
+      },
+      codeSent: (String verificationId, int? resendToken) async {
+        // Save the verificationId and navigate to the OTPScreen
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OtpScreen(
+              verificationId: verificationId,
+              phoneNumber: phoneNumber,
+            ),
+          ),
+        );
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        // Handle timeout (e.g., when the code auto-retrieval time has elapsed)
+      },
+    );
   }
 
   @override
@@ -115,11 +149,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 366,
                   height: 62,
                   child: ElevatedButton(
-                    onPressed: isButtonEnabled ? navigateToAnotherScreen : null,
+                    onPressed: isButtonEnabled
+                        ? () => verifyPhoneNumber(phoneController.text.trim())
+                        : null,
                     // Use the isButtonEnabled variable to determine whether the button should be enabled or not
                     style: ButtonStyle(
                       foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
+                      MaterialStateProperty.all<Color>(Colors.white),
                       backgroundColor: MaterialStateProperty.all<Color>(
                           isButtonEnabled
                               ? const Color(0xff2454ff)
@@ -146,15 +182,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  void navigateToAnotherScreen() {
-    // Implement the navigation logic here
-    // For example, you can use Navigator to push a new screen:
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const OtpScreen()),
     );
   }
 }

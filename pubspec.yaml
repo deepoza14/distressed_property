@@ -42,6 +42,8 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.1
   firebase_storage: ^11.2.5
+  cloud_firestore: ^4.8.3
+  sms_autofill: ^2.3.0
 
 dev_dependencies:
   flutter_test:

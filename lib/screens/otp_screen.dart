@@ -5,9 +5,15 @@ import 'package:distressed_property/theme/color_theme.dart';
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
+  final String verificationId;
+  final String phoneNumber;
+
+  const OtpScreen(
+      {super.key, required this.verificationId, required this.phoneNumber});
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -23,6 +29,7 @@ class _OtpScreenState extends State<OtpScreen> {
   void initState() {
     super.initState();
     _startTimer();
+    _listenForSMS(); // Start listening for incoming SMS messages
   }
 
   @override
@@ -61,12 +68,77 @@ class _OtpScreenState extends State<OtpScreen> {
     if (_enableResend) {
       _otpController.clear(); // Clear the OTP input field
       _startTimer();
+      _verifyPhoneNumber();
     }
   }
 
-  void verifyotp() async {
+  void _listenForSMS() {
+    SmsAutoFill().listenForCode; // Start listening for incoming SMS messages
+    SmsAutoFill().code.listen((String? code) {
+      if (code != null) {
+        setState(() {
+          _otpController.text = code;
+        });
+      }
+    });
+  }
+
+  void _verifyPhoneNumber() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    verificationCompleted(AuthCredential credential) async {
+      // Auto-retrieve the SMS code on Android devices
+      await auth.signInWithCredential(credential);
+      // OTP verification completed, navigate to the main screen
+      _navigateToMainScreen();
+    }
+
+    verificationFailed(FirebaseAuthException e) {
+      // Handle verification failure (e.g., the phone number format is incorrect)
+      print('Verification Failed: $e');
+    }
+
+    codeSent(String verificationId, int? resendToken) async {
+      // Save the verificationId to be used later
+      // No need to set the widget.verificationId as it's already set in the constructor
+    }
+
+    codeAutoRetrievalTimeout(String verificationId) {
+      // Handle timeout (e.g., when the code auto-retrieval time has elapsed)
+    }
+
+    await auth.verifyPhoneNumber(
+      phoneNumber: '+91${widget.phoneNumber}',
+      // Add the country code to the phone number
+      verificationCompleted: verificationCompleted,
+      verificationFailed: verificationFailed,
+      codeSent: codeSent,
+      codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
+    );
+  }
+
+  void _signInWithOTP(String smsCode) async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: widget.verificationId,
+        smsCode: smsCode,
+      );
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      // OTP verification completed, navigate to the main screen
+      _navigateToMainScreen();
+    } catch (e) {
+      // Handle invalid OTP or other errors during verification
+      print('Verification Error: $e');
+    }
+  }
+
+  void _navigateToMainScreen() {
+    Navigator.popUntil(context, (route) => route.isFirst);
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const MainAppScreen()));
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainAppScreen(),
+      ),
+    );
   }
 
   @override
@@ -94,6 +166,7 @@ class _OtpScreenState extends State<OtpScreen> {
         color: const Color.fromRGBO(234, 239, 243, 1),
       ),
     );
+
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -135,25 +208,24 @@ class _OtpScreenState extends State<OtpScreen> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 31, horizontal: 14),
                 child: Text(
-                  "Enter verification code sent your +91-9876XXXX10",
+                  "Enter verification code sent to your +91-${widget.phoneNumber}",
                   style: subtitleTextStyle(),
                   textAlign: TextAlign.center,
                 ),
               ),
               Center(
                 child: Pinput(
-                  length: 4,
+                  length: 6,
                   defaultPinTheme: defaultPinTheme,
                   focusedPinTheme: focusedPinTheme,
                   submittedPinTheme: submittedPinTheme,
                   controller: _otpController,
                   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                  // Enable auto-validation
                   showCursor: true,
                   onCompleted: (pin) {
-                    verifyotp();
-                  },
-                  onChanged: (value) {
-                    //listenForOTP();
+                    _signInWithOTP(
+                        pin); // Call _signInWithOTP with the entered PIN
                   },
                 ),
               ),
