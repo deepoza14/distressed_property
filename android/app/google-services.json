@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "420452368319",
+    "project_id": "distressed-property-70183",
+    "storage_bucket": "distressed-property-70183.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420452368319:android:c3597f2d6d32cff04aeb0a",
+        "android_client_info": {
+          "package_name": "com.example.distressed_property"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420452368319-jcstrim901bj4j8eilvulr9hu6ardue4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvFD1t8njdHbgjAyqS7nIuqqL6CbqbpU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420452368319-jcstrim901bj4j8eilvulr9hu6ardue4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "420452368319-oh3nr0o8posmm1eh6c8g4kpjd8a5qldj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.distressedProperty"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
