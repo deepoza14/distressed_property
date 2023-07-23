@@ -7,27 +7,30 @@ class CustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+    double baseWidth = 430;
+    double w = MediaQuery.of(context).size.width / baseWidth;
+    double ww = w * 0.97;
+    return ListView(
+      // Replace Column with ListView
+      shrinkWrap: true,
+      physics: ClampingScrollPhysics(), // Disable scrolling bouncing effect
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 30, top: 50),
+          padding: EdgeInsets.only(left: 30 * w, top: 20 * w),
           child: Row(
             children: [
               Text(
                 "Visit on :",
                 style: editMetropolisTextStyle(
-                    fontSize: 18,
+                    fontSize: 18 * ww,
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10 * w),
               Text(
                 "20th MAY 10:10AM",
                 style: editMetropolisTextStyle(
-                    fontSize: 17,
+                    fontSize: 17 * ww,
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               ),
@@ -35,30 +38,32 @@ class CustomBottomSheet extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 30, top: 22),
+          padding: EdgeInsets.only(left: 30 * w, top: 0 * w),
           child: Text(
             "Parishram",
             style: editMetropolisTextStyle(
-                fontSize: 43, fontWeight: FontWeight.w500, color: Colors.black),
+                fontSize: 43 * ww,
+                fontWeight: FontWeight.w500,
+                color: Colors.black),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 30, top: 22, right: 30),
+          padding: EdgeInsets.only(left: 30 * w, top: 0 * w, right: 30 * w),
           child: Row(
             children: [
               Image.asset(
                 "assets/images/map.png",
-                height: 30,
-                width: 30,
+                height: 30 * w,
+                width: 30 * w,
               ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: 10 * w,
               ),
               Expanded(
                   child: Text(
                 """203-A, Pandurang Asharam Marg, Bandra West, Mumbai, Maharashtra 400050""",
                 style: editMetropolisTextStyle(
-                    fontSize: 20,
+                    fontSize: 20 * ww,
                     fontWeight: FontWeight.normal,
                     color: Colors.black),
               ))
@@ -66,22 +71,22 @@ class CustomBottomSheet extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 30, top: 22, right: 30),
+          padding: EdgeInsets.only(left: 30 * w, top: 15 * w, right: 30 * w),
           child: Row(
             children: [
               Image.asset(
                 "assets/images/person"
                 ".png",
-                height: 30,
-                width: 30,
+                height: 30 * w,
+                width: 30 * w,
               ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: 10 * w,
               ),
               Text(
                 "Harish Ch. Nandi",
                 style: editMetropolisTextStyle(
-                    fontSize: 22,
+                    fontSize: 22 * ww,
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               )
@@ -89,21 +94,21 @@ class CustomBottomSheet extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 30, top: 22, right: 30),
+          padding: EdgeInsets.only(left: 30 * w, top: 15 * w, right: 30 * w),
           child: Row(
             children: [
               Image.asset(
                 "assets/images/appointment.png",
-                height: 30,
-                width: 30,
+                height: 30 * w,
+                width: 30 * w,
               ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: 10 * w,
               ),
               Text(
                 "Appointment",
                 style: editTextStyle(
-                    fontSize: 24,
+                    fontSize: 24 * ww,
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               )
@@ -113,31 +118,36 @@ class CustomBottomSheet extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 35, top: 5, bottom: 0),
+              padding: EdgeInsets.only(left: 35 * w, top: 5 * w, bottom: 0 * w),
               child: Image.asset(
                 "assets/images/phone.png",
-                height: 52,
-                width: 52,
+                height: 52 * w,
+                width: 52 * w,
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 35, top: 5, bottom: 0,right: 35),
+                padding: EdgeInsets.only(
+                    left: 35 * w, top: 5 * w, bottom: 0, right: 35 * w),
                 child: TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const UpdateScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const UpdateScreen()));
                     },
                     child: Container(
-                        height: 52,
-                        width: 268,
+                        height: 52 * w,
+                        width: 268 * w,
                         decoration: const BoxDecoration(
                             color: Color(0xff2454FF),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
                         child: Center(
                           child: Text(
                             "Inspection",
                             style: editTextStyle(
-                                fontSize: 28,
+                                fontSize: 28 * ww,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           ),

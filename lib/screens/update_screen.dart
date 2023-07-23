@@ -11,8 +11,12 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreenState extends State<UpdateScreen> {
+
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 430;
+    double w = MediaQuery.of(context).size.width / baseWidth;
+    double ww = w * 0.97;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -24,208 +28,212 @@ class _UpdateScreenState extends State<UpdateScreen> {
         title: Text(
           "Property Inspection",
           style: editMetropolisTextStyle(
-              fontSize: 22, fontWeight: FontWeight.w500, color: Colors.black),
+              fontSize: 22*ww, fontWeight: FontWeight.w500, color: Colors.black),
         ),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            ListView(
-              shrinkWrap: true,
-              children: [
-                ListTile(
-                  leading: Image.asset("assets/images/profile.png"),
-                  title: Text(
-                    "Property Owner",
-                    style: editMetropolisTextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Image.asset("assets/images/verification_successfull.png"),
-                      const SizedBox(
-                        width: 4,
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  ListTile(
+                    leading: Image.asset("assets/images/profile.png"),
+                    title: Text(
+                      "Property Owner",
+                      style: editMetropolisTextStyle(
+                        fontSize: 22*ww,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
                       ),
-                      Text(
-                        "Verification Successful",
-                        style: editMetropolisTextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xff28B446),
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Image.asset("assets/images/verification_successfull.png"),
+                         SizedBox(
+                          width: 4*w,
                         ),
-                      ),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset("assets/images/arrow.png"),
-                  ),
-                ),
-                ListTile(
-                  leading: Image.asset("assets/images/profile.png"),
-                  title: Text(
-                    "Property Address",
-                    style: editMetropolisTextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Image.asset("assets/images/verification_successfull.png"),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        "Verification Succesfull",
-                        style: editMetropolisTextStyle(
-                            fontSize: 18,
+                        Text(
+                          "Verification Successful",
+                          style: editMetropolisTextStyle(
+                            fontSize: 18*ww,
                             fontWeight: FontWeight.w500,
-                            color: const Color(0xff28B446)),
-                      ),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      "assets/images/arrow.png",
-                      height: 35,
-                      width: 35,
+                            color: const Color(0xff28B446),
+                          ),
+                        ),
+                      ],
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset("assets/images/arrow.png"),
                     ),
                   ),
-                ),
-                ListTile(
-                  leading: Image.asset("assets/images/property.png"),
-                  title: Text(
-                    "Property Details",
-                    style: editMetropolisTextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Image.asset("assets/images/verification_pending.png"),
-                      const SizedBox(
-                        width: 4,
+                  ListTile(
+                    leading: Image.asset("assets/images/profile.png"),
+                    title: Text(
+                      "Property Address",
+                      style: editMetropolisTextStyle(
+                          fontSize: 22*ww,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    subtitle: Expanded(
+                      child: Row(
+                        children: [
+                          Image.asset("assets/images/verification_successfull.png"),
+                           SizedBox(
+                            width: 4*w,
+                          ),
+                          Text(
+                            "Verification Succesfull",
+                            style: editMetropolisTextStyle(
+                                fontSize: 18*ww,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff28B446)),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Verification Pending",
-                        style: editMetropolisTextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xffFFA450)),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset(
+                        "assets/images/arrow.png",
+                        height: 35*w,
+                        width: 35*w,
                       ),
-                    ],
+                    ),
                   ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset("assets/images/arrow.png"),
+                  ListTile(
+                    leading: Image.asset("assets/images/property.png"),
+                    title: Text(
+                      "Property Details",
+                      style: editMetropolisTextStyle(
+                          fontSize: 22*ww,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Image.asset("assets/images/verification_pending.png"),
+                         SizedBox(
+                          width: 4*w,
+                        ),
+                        Text(
+                          "Verification Pending",
+                          style: editMetropolisTextStyle(
+                              fontSize: 18*ww,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xffFFA450)),
+                        ),
+                      ],
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset("assets/images/arrow.png"),
+                    ),
                   ),
-                ),
-                ListTile(
-                  leading: Image.asset("assets/images/amenities.png"),
-                  title: Text(
-                    "Amenities & Features",
-                    style: editMetropolisTextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
+                  ListTile(
+                    leading: Image.asset("assets/images/amenities.png"),
+                    title: Text(
+                      "Amenities & Features",
+                      style: editMetropolisTextStyle(
+                          fontSize: 22*ww,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Image.asset("assets/images/verification_pending.png"),
+                         SizedBox(
+                          width: 4*w,
+                        ),
+                        Text(
+                          "Verification Pending",
+                          style: editMetropolisTextStyle(
+                              fontSize: 18*ww,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xffFFA450)),
+                        ),
+                      ],
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset("assets/images/arrow.png"),
+                    ),
                   ),
-                  subtitle: Row(
-                    children: [
-                      Image.asset("assets/images/verification_pending.png"),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        "Verification Pending",
-                        style: editMetropolisTextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xffFFA450)),
-                      ),
-                    ],
+                  ListTile(
+                    leading: Image.asset("assets/images/property_images.png"),
+                    title: Text(
+                      "Property Images",
+                      style: editMetropolisTextStyle(
+                          fontSize: 22*ww,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Image.asset("assets/images/verification_pending.png"),
+                         SizedBox(
+                          width: 4*w,
+                        ),
+                        Text(
+                          "Verification Pending",
+                          style: editMetropolisTextStyle(
+                              fontSize: 18*ww,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xffFFA450)),
+                        ),
+                      ],
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PropertyImages()));
+                      },
+                      icon: Image.asset("assets/images/arrow.png"),
+                    ),
                   ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset("assets/images/arrow.png"),
-                  ),
-                ),
-                ListTile(
-                  leading: Image.asset("assets/images/property_images.png"),
-                  title: Text(
-                    "Property Images",
-                    style: editMetropolisTextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Image.asset("assets/images/verification_pending.png"),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        "Verification Pending",
-                        style: editMetropolisTextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xffFFA450)),
-                      ),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const PropertyImages()));
-                    },
-                    icon: Image.asset("assets/images/arrow.png"),
-                  ),
-                ),
-                ListTile(
-                  leading: Image.asset("assets/images/property_documents.png"),
-                  title: Text(
-                    "Property Document",
-                    style: editMetropolisTextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Image.asset("assets/images/verification_pending.png"),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        "Verification Pending",
-                        style: editMetropolisTextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xffFFA450)),
-                      ),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset("assets/images/arrow.png"),
-                  ),
-                )
-              ],
+                  ListTile(
+                    leading: Image.asset("assets/images/property_documents.png"),
+                    title: Text(
+                      "Property Document",
+                      style: editMetropolisTextStyle(
+                          fontSize: 22*ww,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Image.asset("assets/images/verification_pending.png"),
+                         SizedBox(
+                          width: 4*w,
+                        ),
+                        Text(
+                          "Verification Pending",
+                          style: editMetropolisTextStyle(
+                              fontSize: 18*ww,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xffFFA450)),
+                        ),
+                      ],
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset("assets/images/arrow.png"),
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
       ),
       bottomNavigationBar: Padding(
         padding:
-            const EdgeInsets.only(left: 32, right: 32, top: 10, bottom: 10),
+             EdgeInsets.only(left: 32*w, right: 32*w, top: 10*w, bottom: 10*w),
         child: CustomButton(
           onPressed: () {},
           text: "Submit", color: const Color(0xffd9d9d9), textColor: const Color(0xFF5F5F5F)),
