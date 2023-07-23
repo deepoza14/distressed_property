@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '420452368319',
     projectId: 'distressed-property-70183',
     storageBucket: 'distressed-property-70183.appspot.com',
+    androidClientId: '420452368319-simk46lc9jq212kd3luovki61l8sp3vt.apps.googleusercontent.com',
     iosClientId: '420452368319-oh3nr0o8posmm1eh6c8g4kpjd8a5qldj.apps.googleusercontent.com',
     iosBundleId: 'com.example.distressedProperty',
   );
