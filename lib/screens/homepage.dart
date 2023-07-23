@@ -1,3 +1,4 @@
+import 'package:distressed_property/screens/update_screen.dart';
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:distressed_property/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -292,11 +293,11 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         PopupMenuItem(
                                           onTap: () {
-                                            Navigator.pop(context);
-                                            showModalBottomSheet(
-                                                context: context,
-                                                builder: (context) =>
-                                                    const CustomBottomSheet());
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        UpdateScreen()));
                                           },
                                           child: Text(
                                             "Update",

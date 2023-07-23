@@ -1,3 +1,4 @@
+import 'package:distressed_property/screens/update_screen.dart';
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:flutter/material.dart';
 
@@ -123,7 +124,9 @@ class CustomBottomSheet extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 35, top: 5, bottom: 0,right: 35),
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateScreen()));
+                    },
                     child: Container(
                         height: 52,
                         width: 268,
