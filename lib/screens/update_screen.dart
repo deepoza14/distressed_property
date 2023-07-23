@@ -11,7 +11,6 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreenState extends State<UpdateScreen> {
-
   @override
   Widget build(BuildContext context) {
     double baseWidth = 430;
@@ -28,7 +27,9 @@ class _UpdateScreenState extends State<UpdateScreen> {
         title: Text(
           "Property Inspection",
           style: editMetropolisTextStyle(
-              fontSize: 22*ww, fontWeight: FontWeight.w500, color: Colors.black),
+              fontSize: 22 * ww,
+              fontWeight: FontWeight.w500,
+              color: Colors.black),
         ),
       ),
       body: SafeArea(
@@ -43,30 +44,35 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     title: Text(
                       "Property Owner",
                       style: editMetropolisTextStyle(
-                        fontSize: 22*ww,
+                        fontSize: 22 * ww,
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
                       ),
                     ),
                     subtitle: Row(
                       children: [
-                        Image.asset("assets/images/verification_successfull.png"),
-                         SizedBox(
-                          width: 4*w,
+                        Image.asset(
+                            "assets/images/verification_successfull.png"),
+                        SizedBox(
+                          width: 4 * w,
                         ),
-                        Text(
-                          "Verification Successful",
-                          style: editMetropolisTextStyle(
-                            fontSize: 18*ww,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xff28B446),
+                        Expanded(
+                          child: Text(
+                            "Verification Successful",
+                            style: editMetropolisTextStyle(
+                              fontSize: 18 * ww,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xff28B446),
+                            ),
                           ),
                         ),
                       ],
                     ),
                     trailing: IconButton(
                       onPressed: () {},
-                      icon: Image.asset("assets/images/arrow.png"),
+                      icon: Image.asset(
+                        "assets/images/arrow.png",
+                      ),
                     ),
                   ),
                   ListTile(
@@ -74,33 +80,34 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     title: Text(
                       "Property Address",
                       style: editMetropolisTextStyle(
-                          fontSize: 22*ww,
+                          fontSize: 22 * ww,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
-                    subtitle: Expanded(
-                      child: Row(
-                        children: [
-                          Image.asset("assets/images/verification_successfull.png"),
-                           SizedBox(
-                            width: 4*w,
-                          ),
-                          Text(
+                    subtitle: Row(
+                      children: [
+                        Image.asset(
+                            "assets/images/verification_successfull.png"),
+                        SizedBox(
+                          width: 4 * w,
+                        ),
+                        Expanded(
+                          child: Text(
                             "Verification Succesfull",
                             style: editMetropolisTextStyle(
-                                fontSize: 18*ww,
+                                fontSize: 18 * ww,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff28B446)),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     trailing: IconButton(
                       onPressed: () {},
                       icon: Image.asset(
                         "assets/images/arrow.png",
-                        height: 35*w,
-                        width: 35*w,
+                        height: 35 * w,
+                        width: 35 * w,
                       ),
                     ),
                   ),
@@ -109,20 +116,20 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     title: Text(
                       "Property Details",
                       style: editMetropolisTextStyle(
-                          fontSize: 22*ww,
+                          fontSize: 22 * ww,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
                     subtitle: Row(
                       children: [
                         Image.asset("assets/images/verification_pending.png"),
-                         SizedBox(
-                          width: 4*w,
+                        SizedBox(
+                          width: 4 * w,
                         ),
                         Text(
                           "Verification Pending",
                           style: editMetropolisTextStyle(
-                              fontSize: 18*ww,
+                              fontSize: 18 * ww,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xffFFA450)),
                         ),
@@ -138,20 +145,20 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     title: Text(
                       "Amenities & Features",
                       style: editMetropolisTextStyle(
-                          fontSize: 22*ww,
+                          fontSize: 22 * ww,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
                     subtitle: Row(
                       children: [
                         Image.asset("assets/images/verification_pending.png"),
-                         SizedBox(
-                          width: 4*w,
+                        SizedBox(
+                          width: 4 * w,
                         ),
                         Text(
                           "Verification Pending",
                           style: editMetropolisTextStyle(
-                              fontSize: 18*ww,
+                              fontSize: 18 * ww,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xffFFA450)),
                         ),
@@ -167,20 +174,20 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     title: Text(
                       "Property Images",
                       style: editMetropolisTextStyle(
-                          fontSize: 22*ww,
+                          fontSize: 22 * ww,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
                     subtitle: Row(
                       children: [
                         Image.asset("assets/images/verification_pending.png"),
-                         SizedBox(
-                          width: 4*w,
+                        SizedBox(
+                          width: 4 * w,
                         ),
                         Text(
                           "Verification Pending",
                           style: editMetropolisTextStyle(
-                              fontSize: 18*ww,
+                              fontSize: 18 * ww,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xffFFA450)),
                         ),
@@ -197,24 +204,25 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     ),
                   ),
                   ListTile(
-                    leading: Image.asset("assets/images/property_documents.png"),
+                    leading:
+                        Image.asset("assets/images/property_documents.png"),
                     title: Text(
                       "Property Document",
                       style: editMetropolisTextStyle(
-                          fontSize: 22*ww,
+                          fontSize: 22 * ww,
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
                     subtitle: Row(
                       children: [
                         Image.asset("assets/images/verification_pending.png"),
-                         SizedBox(
-                          width: 4*w,
+                        SizedBox(
+                          width: 4 * w,
                         ),
                         Text(
                           "Verification Pending",
                           style: editMetropolisTextStyle(
-                              fontSize: 18*ww,
+                              fontSize: 18 * ww,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xffFFA450)),
                         ),
@@ -232,12 +240,13 @@ class _UpdateScreenState extends State<UpdateScreen> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding:
-             EdgeInsets.only(left: 32*w, right: 32*w, top: 10*w, bottom: 10*w),
+        padding: EdgeInsets.only(
+            left: 32 * w, right: 32 * w, top: 10 * w, bottom: 10 * w),
         child: CustomButton(
-          onPressed: () {},
-          text: "Submit", color: const Color(0xffd9d9d9), textColor: const Color(0xFF5F5F5F)),
-
+            onPressed: () {},
+            text: "Submit",
+            color: const Color(0xffd9d9d9),
+            textColor: const Color(0xFF5F5F5F)),
       ),
     );
   }
