@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:distressed_property/theme/textstyle.dart';
 import 'package:distressed_property/widgets/custom_button.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class PropertyImages extends StatefulWidget {
@@ -14,7 +15,6 @@ class PropertyImages extends StatefulWidget {
 
 class _PropertyImagesState extends State<PropertyImages> {
   File? _attachmentFile1;
-  File? _attachmentFile2;
 
   Future<void> _pickFile1() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
@@ -23,8 +23,40 @@ class _PropertyImagesState extends State<PropertyImages> {
       setState(() {
         _attachmentFile1 = File(result.files.single.path!);
       });
+
+      // Upload the file to Firebase Storage and get the download URL
+      String? downloadURL = await uploadFileToFirebase(_attachmentFile1!);
+
+      if (downloadURL != null) {
+        // File uploaded successfully, you can now use the downloadURL as needed.
+        print('File uploaded to Firebase: $downloadURL');
+      } else {
+        // Handle the case when file upload fails
+        print('File upload to Firebase failed.');
+      }
     } else {
       // User canceled the picker
+    }
+  }
+
+  Future<String?> uploadFileToFirebase(File file) async {
+    try {
+      // Create a reference to the storage bucket
+      Reference storageReference = FirebaseStorage.instance
+          .ref()
+          .child('images/${DateTime.now().millisecondsSinceEpoch}');
+
+      // Upload the file to Firebase Storage
+      UploadTask uploadTask = storageReference.putFile(file);
+
+      // Wait for the upload to complete and get the download URL
+      TaskSnapshot taskSnapshot = await uploadTask;
+      String downloadURL = await taskSnapshot.ref.getDownloadURL();
+
+      return downloadURL;
+    } catch (error) {
+      print('Error uploading file to Firebase: $error');
+      return null;
     }
   }
 
@@ -455,7 +487,16 @@ class _PropertyImagesState extends State<PropertyImages> {
         padding:
             const EdgeInsets.only(left: 32, right: 32, top: 10, bottom: 10),
         child: CustomButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_attachmentFile1 != null) {
+                // File has been uploaded successfully, navigate back
+                Navigator.pop(context);
+              } else {
+                // File upload is required, show snackbar
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Please upload a file before submitting.')));
+              }
+            },
             text: "Submit",
             color: const Color(0xFF2454FF),
             textColor: const Color(0xFFD9D9D9)),
