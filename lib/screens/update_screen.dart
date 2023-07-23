@@ -18,6 +18,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
     double ww = w * 0.97;
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -106,8 +107,6 @@ class _UpdateScreenState extends State<UpdateScreen> {
                       onPressed: () {},
                       icon: Image.asset(
                         "assets/images/arrow.png",
-                        height: 35 * w,
-                        width: 35 * w,
                       ),
                     ),
                   ),
