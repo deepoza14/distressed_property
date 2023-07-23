@@ -64,7 +64,7 @@ class CustomBottomSheet extends StatelessWidget {
                 """203-A, Pandurang Asharam Marg, Bandra West, Mumbai, Maharashtra 400050""",
                 style: editMetropolisTextStyle(
                     fontSize: 20 * ww,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.w400,
                     color: Colors.black),
               ))
             ],
