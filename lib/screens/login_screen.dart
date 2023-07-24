@@ -1,6 +1,7 @@
 import 'package:distressed_property/screens/otp_screen.dart';
 import 'package:distressed_property/theme/color_theme.dart';
 import 'package:distressed_property/theme/textstyle.dart';
+import 'package:distressed_property/widgets/failedalert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,7 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Future<void> verifyPhoneNumber(String phoneNumber, BuildContext context) async {
+  Future<void> verifyPhoneNumber(
+      String phoneNumber, BuildContext context) async {
     FirebaseAuth auth = FirebaseAuth.instance;
 
     await auth.verifyPhoneNumber(
@@ -41,7 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
         // (Optional: If you want to navigate to another screen, do it here)
       },
       verificationFailed: (FirebaseAuthException e) {
-        // Handle verification failure (e.g., the phone number format is incorrect)
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const FailedAlertDialog();
+          },
+        );
       },
       codeSent: (String verificationId, int? resendToken) async {
         // Save the verificationId and navigate to the OTPScreen
@@ -158,28 +165,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(left: 32, top: 65, right: 32),
+                        const EdgeInsets.only(left: 32, top: 65, right: 32),
                     child: SizedBox(
                       width: double.infinity,
                       height: 62 * w,
                       child: ElevatedButton(
                         onPressed: isButtonEnabled
                             ? () => verifyPhoneNumber(
-                          phoneController.text.trim(),
-                          context,
-                        )
+                                  phoneController.text.trim(),
+                                  context,
+                                )
                             : null,
                         // Use the isButtonEnabled variable to determine whether the button should be enabled or not
                         style: ButtonStyle(
                           foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
+                              MaterialStateProperty.all<Color>(Colors.white),
                           backgroundColor: MaterialStateProperty.all<Color>(
                             isButtonEnabled
                                 ? const Color(0xff2454ff)
                                 : const Color(0xffd9d9d9),
                           ),
                           shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6 * w),
                             ),
