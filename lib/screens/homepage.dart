@@ -67,14 +67,15 @@ class HomePage extends StatelessWidget {
                         height: 124 * w,
                         decoration: BoxDecoration(
                           color: const Color(0xffFAD1CA),
-                          borderRadius: BorderRadius.all(Radius.circular(2 * w)),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(2 * w)),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -115,14 +116,15 @@ class HomePage extends StatelessWidget {
                         height: 124 * w,
                         decoration: BoxDecoration(
                           color: const Color(0xff7795ff),
-                          borderRadius: const BorderRadius.all(Radius.circular(2)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(2)),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset:
-                              const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -181,19 +183,22 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 30 * w, right: 33 * w, top: 7 * w),
+                    padding: EdgeInsets.only(
+                        left: 30 * w, right: 33 * w, top: 7 * w),
                     child: Container(
                       height: 185 * w,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(6 * w)),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(6 * w)),
                           color: const Color(0xFFEEF6F9),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ]),
                       child: Column(
@@ -202,7 +207,8 @@ class HomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(left: 18 * w, top: 15 * w),
+                              padding:
+                                  EdgeInsets.only(left: 18 * w, top: 15 * w),
                               child: Row(
                                 children: [
                                   Text(
@@ -228,7 +234,8 @@ class HomePage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(left: 18 * w, top: 10 * w),
+                              padding:
+                                  EdgeInsets.only(left: 18 * w, top: 10 * w),
                               child: Text(
                                 "Sethna Elron Gardens",
                                 style: editMetropolisTextStyle(
@@ -240,7 +247,8 @@ class HomePage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(left: 18 * w, top: 10 * w),
+                              padding:
+                                  EdgeInsets.only(left: 18 * w, top: 10 * w),
                               child: Text(
                                 "Bandra West, Mumbai South ..",
                                 style: editMetropolisTextStyle(
@@ -282,7 +290,7 @@ class HomePage extends StatelessWidget {
                                                 showModalBottomSheet(
                                                     context: context,
                                                     builder: (context) =>
-                                                    const CustomBottomSheet());
+                                                        const CustomBottomSheet());
                                               },
                                               child: Row(
                                                 children: [
@@ -291,7 +299,7 @@ class HomePage extends StatelessWidget {
                                                     style: editTextStyle(
                                                       fontSize: 22 * ww,
                                                       fontWeight:
-                                                      FontWeight.w500,
+                                                          FontWeight.w500,
                                                       color: const Color(
                                                           0xffF36F56),
                                                     ),
@@ -307,7 +315,7 @@ class HomePage extends StatelessWidget {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                        const UpdateScreen()));
+                                                            const UpdateScreen()));
                                               },
                                               child: Row(
                                                 children: [
@@ -316,13 +324,13 @@ class HomePage extends StatelessWidget {
                                                     style: editTextStyle(
                                                       fontSize: 22 * ww,
                                                       fontWeight:
-                                                      FontWeight.w500,
+                                                          FontWeight.w500,
                                                       color:
-                                                      const Color.fromRGBO(
-                                                          97,
-                                                          101,
-                                                          215,
-                                                          1.0),
+                                                          const Color.fromRGBO(
+                                                              97,
+                                                              101,
+                                                              215,
+                                                              1.0),
                                                     ),
                                                   ),
                                                 ],
@@ -345,12 +353,14 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 30*w, right: 33*w, top: 15*w),
+                    padding: EdgeInsets.only(
+                        left: 30 * w, right: 33 * w, top: 15 * w),
                     child: Container(
-                      height: 185*w,
-                      width: 368*w,
+                      height: 185 * w,
+                      width: 368 * w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(6*w)),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(6 * w)),
                           color: const Color.fromRGBO(222, 229, 255, 1.0),
                           boxShadow: [
                             BoxShadow(
@@ -367,23 +377,23 @@ class HomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding:  EdgeInsets.only(
-                                  left: 18*w, top: 15*w, right: 18*w),
+                              padding: EdgeInsets.only(
+                                  left: 18 * w, top: 15 * w, right: 18 * w),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "PID: 124127",
                                     style: editTextStyle(
-                                        fontSize: 15*ww,
+                                        fontSize: 15 * ww,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.black),
                                   ),
                                   Text(
                                     "Approved",
                                     style: editMetropolisTextStyle(
-                                        fontSize: 18*ww,
+                                        fontSize: 18 * ww,
                                         fontWeight: FontWeight.w500,
                                         color: const Color.fromRGBO(
                                             40, 180, 70, 1)),
@@ -394,11 +404,12 @@ class HomePage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Padding(
-                              padding:  EdgeInsets.only(left: 18*w, top: 10*w),
+                              padding:
+                                  EdgeInsets.only(left: 18 * w, top: 10 * w),
                               child: Text(
                                 "Wilfred Apartment",
                                 style: editMetropolisTextStyle(
-                                    fontSize: 24*ww,
+                                    fontSize: 24 * ww,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black),
                               ),
@@ -406,11 +417,12 @@ class HomePage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Padding(
-                              padding:  EdgeInsets.only(left: 18*w, top: 10*w),
+                              padding:
+                                  EdgeInsets.only(left: 18 * w, top: 10 * w),
                               child: Text(
                                 "Bandra West, Mumbai South ..",
                                 style: editMetropolisTextStyle(
-                                    fontSize: 18*w,
+                                    fontSize: 18 * w,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black),
                               ),
@@ -419,14 +431,16 @@ class HomePage extends StatelessWidget {
                           const Divider(
                             thickness: 0.5,
                           ),
-                          Padding(
-                            padding:  EdgeInsets.only(left: 18*w),
-                            child: Text(
-                              "Complete",
-                              style: editTextStyle(
-                                  fontSize: 18*ww,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff2454ff)),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 18 * w),
+                              child: Text(
+                                "Complete",
+                                style: editTextStyle(
+                                    fontSize: 18 * ww,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xff2454ff)),
+                              ),
                             ),
                           )
                         ],

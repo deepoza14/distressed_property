@@ -20,8 +20,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           IconButton(
               onPressed: () async {
                 await _auth.signOut();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                      (Route<dynamic> route) => false,
+                );
               },
               icon: Icon(Icons.logout))
         ],

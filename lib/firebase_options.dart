@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,16 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDAK7AWsn2TRBzeczLTz9SILXYYiBTe1_Q',
-    appId: '1:420452368319:web:62700bfe97f2ba954aeb0a',
-    messagingSenderId: '420452368319',
-    projectId: 'distressed-property-70183',
-    authDomain: 'distressed-property-70183.firebaseapp.com',
-    storageBucket: 'distressed-property-70183.appspot.com',
-    measurementId: 'G-D2FL0H8DNT',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDvFD1t8njdHbgjAyqS7nIuqqL6CbqbpU4',
     appId: '1:420452368319:android:c3597f2d6d32cff04aeb0a',
@@ -70,7 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '420452368319',
     projectId: 'distressed-property-70183',
     storageBucket: 'distressed-property-70183.appspot.com',
-    androidClientId: '420452368319-simk46lc9jq212kd3luovki61l8sp3vt.apps.googleusercontent.com',
+    androidClientId: '420452368319-71p24cahg2cb48cglbp2h64ijhq9n4p0.apps.googleusercontent.com',
     iosClientId: '420452368319-oh3nr0o8posmm1eh6c8g4kpjd8a5qldj.apps.googleusercontent.com',
     iosBundleId: 'com.example.distressedProperty',
   );
