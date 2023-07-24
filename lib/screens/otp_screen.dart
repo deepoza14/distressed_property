@@ -25,12 +25,13 @@ class _OtpScreenState extends State<OtpScreen> {
   bool _enableResend = false;
   int _resendSeconds = 30;
   Timer? _resendTimer;
+  bool _verifyingOTP = false;
 
   @override
   void initState() {
     super.initState();
     _startTimer();
-    _listenForSMS(); // Start listening for incoming SMS messages
+    _listenForSMS();
   }
 
   @override
@@ -85,6 +86,9 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   void _verifyPhoneNumber() async {
+    setState(() {
+      _verifyingOTP = true;
+    });
     FirebaseAuth auth = FirebaseAuth.instance;
     verificationCompleted(AuthCredential credential) async {
       // Auto-retrieve the SMS code on Android devices
@@ -115,9 +119,15 @@ class _OtpScreenState extends State<OtpScreen> {
       codeSent: codeSent,
       codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
     );
+    setState(() {
+      _verifyingOTP = false;
+    });
   }
 
   void _signInWithOTP(String smsCode) async {
+    setState(() {
+      _verifyingOTP = true;
+    });
     try {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: widget.verificationId,
@@ -136,6 +146,9 @@ class _OtpScreenState extends State<OtpScreen> {
       // Handle invalid OTP or other errors during verification
       print('Verification Error: $e');
     }
+    setState(() {
+      _verifyingOTP = false;
+    });
   }
 
   void _navigateToMainScreen() {
@@ -231,20 +244,23 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 SizedBox(height: 32 * w),
                 Center(
-                  child: Pinput(
-                    length: 6,
-                    defaultPinTheme: defaultPinTheme,
-                    focusedPinTheme: focusedPinTheme,
-                    submittedPinTheme: submittedPinTheme,
-                    controller: _otpController,
-                    pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                    // Enable auto-validation
-                    showCursor: true,
-                    onCompleted: (pin) {
-                      _signInWithOTP(
-                          pin); // Call _signInWithOTP with the entered PIN
-                    },
-                  ),
+                  child: _verifyingOTP
+                      ? CircularProgressIndicator() // Show circular progress indicator
+                      : Pinput(
+                          length: 6,
+                          defaultPinTheme: defaultPinTheme,
+                          focusedPinTheme: focusedPinTheme,
+                          submittedPinTheme: submittedPinTheme,
+                          controller: _otpController,
+                          pinputAutovalidateMode:
+                              PinputAutovalidateMode.onSubmit,
+                          // Enable auto-validation
+                          showCursor: true,
+                          onCompleted: (pin) {
+                            _signInWithOTP(
+                                pin); // Call _signInWithOTP with the entered PIN
+                          },
+                        ),
                 ),
                 SizedBox(height: 25 * w),
                 Center(
